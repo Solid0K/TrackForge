@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: taskforge-postgres
+    environment:
+      POSTGRES_DB: taskforge
+      POSTGRES_USER: krishu
+      POSTGRES_PASSWORD: taskforge_dev
+    ports:
+      - "127.0.0.1:5435:5432"
+    volumes:
+      - taskforge_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL","pq_isready -U krishu -d taskforge"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  taskforge_data:
+
