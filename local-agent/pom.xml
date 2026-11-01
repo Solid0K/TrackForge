@@ -20,6 +20,12 @@
             <version>5.12.2</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>me.paulschwarz</groupId>
+            <artifactId>springboot4-dotenv</artifactId>
+            <version>5.1.0</version>
+        </dependency>
     </dependencies>
 
     <properties>

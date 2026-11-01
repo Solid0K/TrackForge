@@ -26,7 +26,7 @@ public class TaskService {
 
     @Transactional
     public TaskResponse createTask(TaskCreationRequest request){
-        Task task=new Task(request.getDescription());
+        Task task=new Task(request.getDescription(),request.getOperation());
         Task savedTask=taskRepo.save(task);
         return mapToTaskResponse(savedTask);
     }
@@ -75,6 +75,7 @@ public class TaskService {
         response.setResult(task.getResult());
         response.setCreatedAt(task.getCreatedAt());
         response.setUpdatedAt(task.getUpdatedAt());
+        response.setOperation(task.getOperation());
         return response;
     }
 

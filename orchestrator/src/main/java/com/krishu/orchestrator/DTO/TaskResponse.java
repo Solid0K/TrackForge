@@ -1,5 +1,6 @@
 package com.krishu.orchestrator.DTO;
 
+import com.krishu.orchestrator.TaskOperation;
 import com.krishu.orchestrator.TaskStatus;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,4 +17,5 @@ public class TaskResponse {
     private String result;
     private Instant createdAt;
     private Instant updatedAt;
+    private TaskOperation operation;
 }

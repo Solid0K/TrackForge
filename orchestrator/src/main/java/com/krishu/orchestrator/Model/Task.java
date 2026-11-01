@@ -1,5 +1,6 @@
 package com.krishu.orchestrator.Model;
 
+import com.krishu.orchestrator.TaskOperation;
 import com.krishu.orchestrator.TaskStatus;
 import jakarta.persistence.*;
 
@@ -20,6 +21,10 @@ public class Task {
     @Column(nullable=false,length=20)
     private TaskStatus taskStatus;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable=false,length=20)
+    private TaskOperation taskOperation;
+
     @Column(columnDefinition = "TEXT")
     private String result;
 
@@ -28,9 +33,10 @@ public class Task {
 
     private Instant updatedAt;
 
-    public Task(String description){
+    public Task(String description,TaskOperation operation){
         this.description=description;
         this.taskStatus=TaskStatus.QUEUED;
+        this.taskOperation=operation;
     }
 
     protected Task() {}
@@ -92,5 +98,13 @@ public class Task {
 
     public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public TaskOperation getOperation(){
+        return this.taskOperation;
+    }
+
+    public void setOperation(TaskOperation operation){
+        this.taskOperation=operation;
     }
 }
