@@ -12,6 +12,7 @@ public class TaskResponse {
     private String result;
     private String  createdAt;
     private String updatedAt;
+    private TaskOperation operation;
 
     public UUID getId() {
         return id;
@@ -59,5 +60,13 @@ public class TaskResponse {
 
     public void setUpdatedAt(String updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public void setOperation(TaskOperation operation){
+        this.operation=operation;
+    }
+
+    public TaskOperation getOperation(){
+        return this.operation;
     }
 }
